@@ -141,8 +141,15 @@ body {
     measurementId: "G-Y66D7W1N1G"
   };
 
-  firebase.initializeApp(firebaseConfig);
-  const storage = firebase.storage(app);
+  const app = initializeApp(firebaseConfig);
+  const storage = getStorage(app);
+
+  window.storage = storage;
+  window.ref = ref;
+  window.uploadByte = uploadBytes;
+  window.getDownloadURL = getDownloadURL;
+
+   console.log("Firebase 模組已成功載入餅開放全域存取!");
 
   function uploadFile(file) {
     const storageRef = storage.ref("uploads/" + Date.now() + "_" + file.name);
