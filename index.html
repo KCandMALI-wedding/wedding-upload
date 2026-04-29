@@ -118,7 +118,6 @@ body {
   <input type="file" id="uploadInput" hidden multiple>
     </div>
     </div>
-  
   <div class="note">
     立即可上傳（無需登入）
   </div>
@@ -155,9 +154,9 @@ const progressBar = document.getElementById("progressBar");
 function handleFiles(files) {
   Array.from(files).forEach(file => {
 
-    // 限制影片大小
-    if (file.type.startsWith("video/") && file.size > 50 * 1024 * 1024) {
-      alert("影片太大囉！請小於 50MB 💛");
+    // 🎬 限制影片 300MB
+    if (file.type.startsWith("video/") && file.size > 300 * 1024 * 1024) {
+      alert("影片太大囉（超過300MB）💛\n建議壓縮後再上傳\n或私下傳雲端 / 私訊新人 🙏");
       return;
     }
 
@@ -205,6 +204,9 @@ dropZone.addEventListener("dragleave", () => {
 dropZone.addEventListener("drop", (e) => {
   e.preventDefault();
   dropZone.style.transform = "scale(1)";
+
+  dropZone.querySelector(".upload-text").innerText = "上傳中… 💛";
+
   handleFiles(e.dataTransfer.files);
 });
 
