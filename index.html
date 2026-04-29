@@ -119,7 +119,7 @@ body {
 </button>
       </div>
     </div>
-  </a>
+  
   <div class="note">
     立即可上傳（無需登入）
   </div>
@@ -163,9 +163,10 @@ body {
   uploadFile(file)
     .then(() => {
       alert("上傳成功 💛");
+      console.log("成功上傳");
     })
     .catch(err => {
-      console.error(err);
+      console.error("錯誤：", err);
       alert("上傳失敗 😢");
     });
 });
