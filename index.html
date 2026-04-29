@@ -135,7 +135,7 @@ body {
   apiKey: "AIzaSyAdbheXFlXRFMlJNc_ogWI0OAqCo6stG5k",
   authDomain: "wedding-upload-b2bb2.firebaseapp.com",
   projectId: "wedding-upload-b2bb2",
-  storageBucket: "wedding-upload-b2bb2.firebasestorage.app",
+  storageBucket: "wedding-upload-b2bb2.appspot.com",
     messagingSenderId: "132772019067",
     appId: "1:132772019067:web:175bc2a4e54e15786dbde",
     measurementId: "G-Y66D7W1N1G"
@@ -152,18 +152,23 @@ body {
    console.log("Firebase 模組已成功載入餅開放全域存取!");
 
   function uploadFile(file) {
-    const storageRef = storage.ref("uploads/" + Date.now() + "_" + file.name);
-    return storageRef.put(file);
-  }
+  const storageRef = ref(storage, "uploads/" + Date.now() + "_" + file.name);
+  return uploadBytes(storageRef, file);
+}
 
   document.getElementById("uploadInput").addEventListener("change", function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
+  const file = e.target.files[0];
+  if (!file) return;
 
-    uploadFile(file).then(() => {
+  uploadFile(file)
+    .then(() => {
       alert("上傳成功 💛");
+    })
+    .catch(err => {
+      console.error(err);
+      alert("上傳失敗 😢");
     });
-  });
+});
 </script> 
 </body>
 </html>
