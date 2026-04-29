@@ -6,7 +6,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
 
-<title>婚禮回憶上傳</title>
+<title>冠智&敏葶的婚禮回憶上傳</title>
 
 <style>
 body {
@@ -156,7 +156,7 @@ function handleFiles(files) {
 
     // 🎬 限制影片 300MB
     if (file.type.startsWith("video/") && file.size > 300 * 1024 * 1024) {
-      alert("影片太大囉（超過300MB）💛\n建議壓縮後再上傳\n或私下傳雲端 / 私訊新人 🙏");
+      alert("內含的影片太大囉（超過300MB）💛\n建議私下傳雲端 / 私訊新人 🙏\n(小於300MB的檔案會上傳,請稍後~)");
       return;
     }
 
